@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // app/checkout/page.tsx
 "use client";
 
@@ -13,7 +14,7 @@ import { selectCartTotal, clearCart, selectCart } from "@/store/cartSlice";
 import Image from "next/image";
 import Header from "@/components/header";
 import Footer from "@/components/shared/footer";
-// import OrderConfirmationModal from "@/components/OrderConfirmationModal";
+import OrderConfirmationModal from "@/components/orderConfirmation";
 
 const checkoutSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -33,9 +34,15 @@ type CheckoutFormData = z.infer<typeof checkoutSchema>;
 export default function CheckoutPage() {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const createOrder = useMutation(api.orders.createOrder); // ✅ Uncommented
+  const createOrder = useMutation(api.orders.createOrder); 
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false); // ✅ ADD THIS
+  const [orderDetails, setOrderDetails] = useState<{
+    orderNumber: string;
+    items: any[];
+    grandTotal: number;
+  } | null>(null);
 
   // Get cart data from Redux
   const cartItems = useAppSelector(selectCart);
@@ -98,15 +105,16 @@ export default function CheckoutPage() {
         paymentMethod: data.paymentMethod,
       });
 
-      // Store order details for modal
-      // setOrderDetails({
-      //   orderNumber: result.orderNumber,
-      //   items: cartItems,
-      //   grandTotal,
-      // });
+      console.log("Order created:", result);
+
+      setOrderDetails({
+        orderNumber: result.orderNumber,
+        items: validCartItems,
+        grandTotal,
+      });
 
       // Send confirmation email
-      await fetch("/api/send-confirmation", {
+      fetch("/api/send-confirmation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -117,13 +125,13 @@ export default function CheckoutPage() {
           items: validCartItems,
           totals: { subtotal, shipping, vat, grandTotal },
         }),
-      });
+      }).catch(err => console.log("Email error (non-blocking):", err));
 
       // Clear cart from Redux
       dispatch(clearCart());
 
-      // Redirect to confirmation
-      router.push(`/checkout/confirmation?order=${result.orderNumber}`);
+      // Show success modal
+      setShowSuccessModal(true);
     } catch (error) {
       console.error("Checkout error:", error);
       alert("Something went wrong. Please try again.");
@@ -134,23 +142,6 @@ export default function CheckoutPage() {
 
   // Filter out dummy item for display
   const displayCartItems = cartItems.filter(item => item.id !== 0);
-
-  // Show empty cart message
-  if (displayCartItems.length === 0) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Your cart is empty</h2>
-          <button
-            onClick={() => router.push("/")}
-            className="bg-[#D87D4A] text-white px-8 py-3 uppercase tracking-wider hover:bg-[#FBAF85]"
-          >
-            Continue Shopping
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -172,7 +163,7 @@ export default function CheckoutPage() {
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Checkout Form */}
             <form
-              id="checkout-form" // ✅ Added id
+              id="checkout-form"
               onSubmit={handleSubmit(onSubmit)}
               className="bg-white rounded-lg p-6 md:p-12 flex-1"
             >
@@ -434,8 +425,8 @@ export default function CheckoutPage() {
                       <Image
                         src={item.image}
                         alt={item.name}
-                        width={16}
-                        height={16}
+                        width={64}
+                        height={64}
                         className="rounded-lg object-cover"
                       />
                     )}
@@ -443,7 +434,7 @@ export default function CheckoutPage() {
                       <p className="font-bold text-sm">{item.name}</p>
                       <p className="text-black/50 text-sm">${item.price.toLocaleString()}</p>
                     </div>
-                    <p className="text-black/50 font-bold">x{item.quantity}</p>
+                    <p className="text-black/50 font-bold">x{item.count}</p>
                   </div>
                 ))}
               </div>
@@ -484,6 +475,19 @@ export default function CheckoutPage() {
       <div className="-mt-38">
         <Footer />
       </div>
+
+      {/* ✅ ADD THIS: Success Modal */}
+      {showSuccessModal && orderDetails && (
+        <OrderConfirmationModal
+          orderNumber={orderDetails.orderNumber}
+          items={orderDetails.items}
+          grandTotal={orderDetails.grandTotal}
+          onClose={() => {
+            setShowSuccessModal(false);
+            router.push("/");
+          }}
+        />
+      )}
     </>
   );
 }

@@ -2,6 +2,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 
 interface OrderItem {
   id: number;
@@ -43,14 +44,16 @@ export default function OrderConfirmationModal({ orderNumber, items, grandTotal,
         </p>
 
         {/* Order Summary */}
-        <div className="mb-8 rounded-lg overflow-hidden">
-          <div className="bg-[#F1F1F1] p-6">
+        <div className="flex mb-8 rounded-lg overflow-hidden">
+          <div className="bg-[#F1F1F1 p-6">
             {/* First Item */}
             <div className="flex items-center gap-4 pb-4">
-              <img
+              <Image
                 src={firstItem.image}
                 alt={firstItem.name}
-                className="w-12 h-12 rounded object-cover"
+                width={12}
+                height={12}
+                className="rounded object-cover"
               />
               <div className="flex-1">
                 <p className="font-bold text-sm">{firstItem.name}</p>
