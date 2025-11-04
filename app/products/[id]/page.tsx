@@ -1,0 +1,52 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
+import React, {useEffect, useState} from 'react';
+import Header from '@/components/header';
+import Products from '@/components/products';
+import { useParams } from 'next/navigation';
+
+function ProductDetail() {
+  const params = useParams();
+  const id = params.id as string;
+
+  const [data, setData] = useState([{ id: "0" }])
+  const [product, setProduct] = useState({ id: "0"});
+  const [isLoading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    fetch("/api/db")
+      .then((res) => res.json())
+      .then((response) => {
+        setData(response)
+        setLoading(false);
+        response.data.map((item: any) => {
+          if (item.id.toString() === id) {
+            setProduct(item)
+          }
+        });
+      });
+  }, [id]);
+
+  if (isLoading) {
+    return (
+      <div>
+        <Header />
+        <p>Loading...</p>
+      </div>
+    );
+  }
+  return (
+    <>
+      <div className='bg-black h-[97px]'>
+        <div className='lg:w-[1110px] mx-auto'>
+          <Header />
+        </div>
+      </div>
+      <Products product={product} />
+    </>
+  )
+}
+
+export default ProductDetail;

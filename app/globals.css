@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import "tailwindcss";
+
+@layer theme {
+  @theme {
+    --breakpoint-xs: 375px;
+  }
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+}
+
+.hero {
+  background: url(../public/assets/home/desktop/image-hero.jpg) no-repeat;
+  background-size: contain;
+  height: 729px;
+}
+
+.hero-text {
+  width: 398px;
+  height: 346px;
+}
+
+.speaker {
+  background: url(../public/assets/home/desktop/pattern-circles.svg) no-repeat;
+  background-color: #D87D4A;
+  background-size: cover;
+  object-fit: fill;
+  height: 560px;
+  width: 1109px;
+  background-position-x: -210px;
+  align-items: center;
+}
+
+.speaker-zx7 {
+  background: url(../public/assets/home/desktop/image-speaker-zx7.jpg) no-repeat;
+  background-color: #F1F1F1;
+  background-size: cover;
+  object-fit: fill;
+  height: 320px;
+  width: 1109px;
+}
+
+.footer {
+  height: 365px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    background: url(../public/assets/home/tablet/image-header.jpg) no-repeat;
+    background-size: contain;
+    height: 729px;
+  }
+
+  .hero-text {
+    width: 379px;
+  }
+
+  .hamburger {
+    background: url(../public/assets/shared/tablet/icon-hamburger.svg) no-repeat;
+    width: 16px;
+    height: 15px;
+  }
+
+  .category-image {
+    width: 79.92px;
+    height: 104px;
+  }
+
+  .speaker {
+    height: 720px;
+    width: 689px;
+    background-position-x: -190px;
+    align-items: center;
+  }
+
+  .speaker-image {
+    height: 237px;
+    width: 197.21px;
+  }
+
+  .speaker-zx7 {
+    background: url(../public/assets/home/tablet/image-speaker-zx7.jpg) no-repeat;
+    background-color: #F1F1F1;
+    background-size: cover;
+    object-fit: fill;
+    height: 320px;
+    width: 689px;
+  }
+
+  .earphone {
+    /* background: url(../public/assets/home/tablet/image-earphones-yx1.jpg); */
+    width: 339px;
+    height: 320px;
+  }
+
+  .about-image {
+    width: 689px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .hero {
+    background: url(../public/assets/home/mobile/image-header.jpg) no-repeat;
+    background-size: cover;
+    height: 600px;
+  }
+
+  .hero-text {
+    width: 328px;
+    height: 290px;
+    margin-left: -20px;;
+  }
+}
