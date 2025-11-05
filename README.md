@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Audiophile (HNG Stage 3)
 
-## Getting Started
+A clean, responsive e-commerce frontend built with Next.js and TypeScript that showcases headphones, earphones, and speakers. This repository is the HNG Stage 3 project implementation (audiophile) including a small local JSON data store and Convex server schema for demo orders.
 
-First, run the development server:
+## Deployed Link
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+https://hng-audiophile-seven.vercel.app/
+
+## Key features
+
+- Product category pages: headphones, earphones, speakers
+- Product detail pages with add-to-cart and quantity controls
+- Cart state managed with Redux Toolkit
+- Checkout flow with order confirmation email template (Resend/Resend-like integration code present)
+- Convex integration for (demo) orders and schema
+- Tailwind CSS for styling
+
+## Tech stack
+
+- Next.js 16 (React 19)
+- TypeScript
+- React
+- Redux Toolkit
+- Convex (server + generated client)
+- Tailwind CSS
+
+(Exact dependencies and versions are listed in `package.json`.)
+
+## Prerequisites
+
+- Node.js 18+ recommended
+- npm (comes with Node) or an alternative package manager
+
+## Install
+
+Open PowerShell in the project root (`README.md` is at the repo root) and run:
+
+```powershell
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run (development)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Start the Next.js dev server:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```powershell
+npm run dev
+```
 
-## Learn More
+Open http://localhost:3000 in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+## Build & Start (production)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Build the app and start the production server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```powershell
+npm run build
+npm run start
+```
 
-## Deploy on Vercel
+## Useful npm scripts (from `package.json`)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `dev` — runs `next dev`
+- `build` — runs `next build`
+- `start` — runs `next start`
+- `lint` — runs `eslint`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project structure (high level)
+
+- `app/` — Next.js App Router pages and API routes
+  - `api/` — some API routes including a small demo `db` route and `send-confirmation`
+  - `checkout/`, `headphones/`, `earphones/`, `speakers/`, etc. — pages
+- `components/` — UI components used across pages (cart, header, product cards, etc.)
+- `convex/` — Convex functions and schema for orders
+- `data/` — `db.json` used as a local data source
+- `emails/` — email templates (JSX/React-email)
+- `lib/` — helper utilities (e.g., `checkout-schema.ts`)
+- `redux/` & `store/` — Redux provider and slices
+- `public/` — images and static assets
+
+## Convex
+
+This repo includes a `convex/` folder with schema and generated client files. If you plan to run Convex locally or deploy, follow Convex docs to initialize the backend and set the environment variables.
+
+## Contributing
+
+This is a project scaffold for HNG Stage 3. If you want to contribute:
+
+1. Fork and clone the repo.
+2. Create a feature branch.
+3. Open a PR describing your changes.
+
+Keep changes small and focused. Update or add tests where appropriate.
+
+## Notes & next steps
+
+- Add a `.env.example` if you integrate external services (email provider, Convex key, etc.).
+- Add tests and CI (GitHub Actions) for build checks and linting.
+- Consider adding accessibility audits and Lighthouse checks in CI.
+
+## License
+
+This repo doesn't include a license file. Add a license (for example, MIT) if you plan to share or distribute it publicly.
+
+---

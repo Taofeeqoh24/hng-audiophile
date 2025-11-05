@@ -33,7 +33,7 @@ function Cart({ onClose }: Props) {
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className='z-1 absolute top-28 right-50 min-h-[20vh] min-w-[30vw] bg-white text-black p-9 uppercase'
+          className='z-1 absolute top-20 right-50 min-h-[20vh] min-w-[30vw] bg-white text-black p-9 uppercase'
         >
           <div className='flex justify-between'>
             <div className='font-bold text-[18px] tracking-[1.29px] uppercase'>
