@@ -4,20 +4,22 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from './store';
 
 // Define a type for the slice state
+interface CartItem {
+    id: number,
+    image: string,
+    name: string,
+    count: number,
+    price: number,
+    quantity: number
+}
+
 interface CartState {
-    cart: [{
-        id: number,
-        image: string,
-        name: string,
-        count: number,
-        price: number,
-        quantity: number
-    }];
+    cart: CartItem[];
 }
 
 // Define the initial state using that type
 const initialState: CartState = {
-    cart: [{ id: 0, image: "", name: "", count: 0, price: 0, quantity: 0 }],
+    cart: [],
 }
 
 export const cartSlice = createSlice({
@@ -42,7 +44,7 @@ export const cartSlice = createSlice({
             }
         },
         startNewCart: (state) => {
-            state.cart.shift();
+            state.cart = [];
         },
         updateQuantity: (state, action: PayloadAction<{ id: number; quantity: number }>) => {
             const item = state.cart.find(item => item.id === action.payload.id);
@@ -52,7 +54,7 @@ export const cartSlice = createSlice({
         }
     },
         clearCart: (state) => {
-            state.cart = [{ id: 0, image: "", name: "", count: 0, price: 0, quantity: 0 }];
+            state.cart = [];
         }
     },
 });

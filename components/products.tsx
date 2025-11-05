@@ -41,7 +41,7 @@ function Products({ product }: Props) {
             <button 
               className='bg-[#D87D4A] text-white w-40 h-12 font-bold uppercase tracking-[1px] text-[13px] hover:bg-[#FBAF85]'
               onClick={() => 
-              { dispatch(startNewCart());
+              { 
 
                 dispatch(
                   addToCart({ 
@@ -51,6 +51,7 @@ function Products({ product }: Props) {
                     itemCount: count, 
                     image: product.image.mobile.replace(".", ""),
                     count: count,
+                    quantity: count
                   })
                 )
               }
