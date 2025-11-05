@@ -124,6 +124,10 @@ export default function CheckoutPage() {
           name: data.name,
           items: validCartItems,
           totals: { subtotal, shipping, vat, grandTotal },
+          shippingAddress: data.address,
+          shippingCity: data.city,
+          shippingZip: data.zip,
+          shippingCountry: data.country,
         }),
       }).catch(err => console.log("Email error (non-blocking):", err));
 
