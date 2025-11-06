@@ -3,8 +3,8 @@ import CategoryCard from './categoryCard'
 
 function CategoryContainer() {
   return (
-    <div className="my-10 max-md:w-[689px]">
-      <div className="gap-[30px] max-md:gap-2.5 max-md:w-[223px] max-md:h-[165px] px-4 mx-auto w-[1110px] justify-around flex h-[284px] ">
+    <div className="mt-20 mb-40 w-[1110px] mx-auto">
+      <div className="flex lg:flex-row flex-col gap-15 ml-10 lg:ml-0 lg:gap-5 justify-center">
         <CategoryCard category="headphones" />
         <CategoryCard category="speakers" />
         <CategoryCard category="earphones" />

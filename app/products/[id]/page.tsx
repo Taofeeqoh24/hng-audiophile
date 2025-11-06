@@ -7,13 +7,15 @@ import Products from '@/components/products';
 import { useParams } from 'next/navigation';
 import Footer from "@/components/shared/footer";
 import CategoryContainer from '@/components/categoryContainer';
+import ProductFeatures from '@/components/shared/productFeatures';
+
 
 function ProductDetail() {
   const params = useParams();
   const id = params.id as string;
 
   const [data, setData] = useState([{ id: "0" }])
-  const [product, setProduct] = useState({ id: "0"});
+  const [product, setProduct] = useState({ id: "0", features: "", includes:[]});
   const [isLoading, setLoading] = useState(true);
 
 
@@ -47,6 +49,7 @@ function ProductDetail() {
         </div>
       </div>
       <Products product={product} />
+      <ProductFeatures features={product.features} includes={product.includes} />
       <CategoryContainer />
       <Footer />
     </>

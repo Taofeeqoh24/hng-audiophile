@@ -46,15 +46,22 @@ body {
   height: 365px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .hero {
-    background: url(../public/assets/home/tablet/image-header.jpg) no-repeat;
-    background-size: contain;
+    background: url(../public/assets/home/tablet/image-header.jpg) no-repeat center center;
+    background-size: cover;
     height: 729px;
+    
   }
 
   .hero-text {
     width: 379px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 126px;
   }
 
   .hamburger {
@@ -63,6 +70,9 @@ body {
     height: 15px;
   }
 
+  .category {
+    width: 350px;
+  }
   .category-image {
     width: 79.92px;
     height: 104px;
@@ -111,6 +121,6 @@ body {
   .hero-text {
     width: 328px;
     height: 290px;
-    margin-left: -20px;;
   }
+
 }
