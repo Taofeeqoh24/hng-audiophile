@@ -38,13 +38,13 @@ function Header() {
         <button onClick={handleToggleCart}>
           <div className='flex'>
             <Image
-            src="/assets/shared/desktop/icon-cart.svg"
-            alt="Cart Icon"
-            width={23.33}
-            height={20}
-            className='font-bold'
+              src="/assets/shared/desktop/icon-cart.svg"
+              alt="Cart Icon"
+              width={23.33}
+              height={20}
+              className='font-bold'
             />
-            <span className='text-[8px]'>{cart.length}</span>
+            <span className='text-[8px]'>({cart.length})</span>
           </div>
         </button>
         {showCart && <Cart onClose={handleCloseCart} />}

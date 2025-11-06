@@ -5,6 +5,8 @@ import React, {useEffect, useState} from 'react';
 import Header from '@/components/header';
 import Products from '@/components/products';
 import { useParams } from 'next/navigation';
+import Footer from "@/components/shared/footer";
+import CategoryContainer from '@/components/categoryContainer';
 
 function ProductDetail() {
   const params = useParams();
@@ -45,6 +47,8 @@ function ProductDetail() {
         </div>
       </div>
       <Products product={product} />
+      <CategoryContainer />
+      <Footer />
     </>
   )
 }
