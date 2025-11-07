@@ -5,8 +5,7 @@ import Link from 'next/link'
 function Earphones() {
   return (
     <>
-      <div className="flex lg:flex-row flex-col items-center justify-center gap-[30px] max-md:gap-[11px] mx-auto w-full max-w-[1110px] px-4 mt-12">
-        {/* Image section */}
+      <div className="flex lg:flex-row flex-col items-center justify-center gap-[30px] max-md:gap-[11px] mx-auto w-full max-w-[1110px] mt-12">
         <div className="earphone flex justify-center">
           <Image
             src="/assets/home/desktop/image-earphones-yx1.jpg"

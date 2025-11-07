@@ -105,7 +105,7 @@ body {
   }
 
   .earphone {
-    width: 100%;
+    width: 339px;
     height: 320px;
   }
 
@@ -127,4 +127,11 @@ body {
     height: 290px;
   }
 
+  .footer {
+    width: 375px;
+    max-height: 654px;
+    height: 100%;
+  }
+  
 }
+

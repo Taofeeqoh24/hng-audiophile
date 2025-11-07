@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from "@/components/header";
 import CategoryContainer from "@/components/categoryContainer";
 import About from "@/components/shared/about";
@@ -34,10 +34,12 @@ function Headphones() {
   return (
     <>
       <div className='bg-black h-[336px]'>
-        <div className="w-[1110px] mx-auto px-4">
+
+        <div className="lg:max-w-[1400px] lg:w-[1110px] lg:mx-auto px-4">
           <Header />
           <hr className="mx-auto mt-9 text-white opacity-20"></hr>
         </div>
+
         <CategoryPageHeader category={category} />
       </div>
 

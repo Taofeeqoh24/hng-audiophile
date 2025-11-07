@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/header';
 import Products from '@/components/products';
 import { useParams } from 'next/navigation';
@@ -15,7 +15,7 @@ function ProductDetail() {
   const id = params.id as string;
 
   const [data, setData] = useState([{ id: "0" }])
-  const [product, setProduct] = useState({ id: "0", features: "", includes:[]});
+  const [product, setProduct] = useState({ id: "0", features: "", includes: [] });
   const [isLoading, setLoading] = useState(true);
 
 
@@ -44,8 +44,9 @@ function ProductDetail() {
   return (
     <>
       <div className='bg-black h-[97px]'>
-        <div className='lg:w-[1110px] mx-auto'>
+        <div className="lg:max-w-[1400px] lg:w-[1110px] lg:mx-auto px-4">
           <Header />
+          <hr className="mx-auto mt-9 text-white opacity-20"></hr>
         </div>
       </div>
       <Products product={product} />

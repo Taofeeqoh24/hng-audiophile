@@ -34,7 +34,7 @@ type CheckoutFormData = z.infer<typeof checkoutSchema>;
 export default function CheckoutPage() {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const createOrder = useMutation(api.orders.createOrder); 
+  const createOrder = useMutation(api.orders.createOrder);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false); // ✅ ADD THIS
@@ -150,9 +150,10 @@ export default function CheckoutPage() {
   return (
     <>
       <div className='bg-black'>
-        <div className="w-[1110px] mx-auto">
+        <div className="lg:max-w-[1400px] lg:w-[1110px] lg:mx-auto px-4">
           <Header />
           <hr className="mx-auto mt-9 text-white opacity-20"></hr>
+
         </div>
       </div>
       <div className="bg-[#F1F1F1] min-h-screen py-16 px-6">

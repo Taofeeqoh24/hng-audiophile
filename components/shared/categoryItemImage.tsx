@@ -6,18 +6,18 @@ interface Props {
   name: string;
 }
 
-function CategoryItemImage({ src, name}: Props) {
-  
+function CategoryItemImage({ src, name }: Props) {
   return (
-    <>
-      <Image 
-        src={src} 
+    <div className="flex justify-center w-full">
+      <Image
+        src={src}
         alt={name}
         width={540}
         height={560}
+        className="rounded-lg w-full max-w-[540px] h-auto object-cover"
       />
-    </>
-  )
+    </div>
+  );
 }
 
 export default CategoryItemImage;
