@@ -113,6 +113,17 @@ body {
     width: 689px;
     height: 300px;
   }
+
+  .gallery-image {
+    width: 90%;
+    height: auto;
+  }
+
+  .gallery {
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+  }
 }
 
 @media screen and (max-width: 375px) {
@@ -132,6 +143,14 @@ body {
     max-height: 654px;
     height: 100%;
   }
-  
+   .gallery-image {
+    width: 300px;
+    height: auto;
+  }
+
+  .gallery {
+    width: 327px;
+    height: auto;
+  }
 }
 

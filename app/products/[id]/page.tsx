@@ -8,6 +8,8 @@ import { useParams } from 'next/navigation';
 import Footer from "@/components/shared/footer";
 import CategoryContainer from '@/components/categoryContainer';
 import ProductFeatures from '@/components/shared/productFeatures';
+import ProductGallery from '@/components/shared/productGallery';
+import About from '@/components/shared/about';
 
 
 function ProductDetail() {
@@ -15,7 +17,16 @@ function ProductDetail() {
   const id = params.id as string;
 
   const [data, setData] = useState([{ id: "0" }])
-  const [product, setProduct] = useState({ id: "0", features: "", includes: [] });
+  const [product, setProduct] = useState({ 
+    id: "0", 
+    features: "", 
+    includes: [],
+    gallery: { 
+    first: { desktop: "string" }, 
+    second: { desktop: "string" }, 
+    third: { desktop: "string" }
+  },
+  });
   const [isLoading, setLoading] = useState(true);
 
 
@@ -51,6 +62,8 @@ function ProductDetail() {
       </div>
       <Products product={product} />
       <ProductFeatures features={product.features} includes={product.includes} />
+      <ProductGallery gallery={product.gallery} />
+      <About />
       <CategoryContainer />
       <Footer />
     </>
