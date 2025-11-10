@@ -7,9 +7,20 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Manrope', sans-serif;
 }
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+
 
 .hero {
   background: url(../public/assets/home/desktop/image-hero.jpg) no-repeat;

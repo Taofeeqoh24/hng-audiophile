@@ -12,9 +12,9 @@ import Footer from "@/components/shared/footer";
 function Home() {
   return (
     <>
-      <div className="overflow-x-hidden">
+      <div>
         <div className="hero">
-          <div className="lg:max-w-[1400px] lg:w-[1110px] lg:mx-auto px-4">
+          <div className="max-w-[1110px] w-full lg:mx-auto px-4">
             <Header />
             <hr className="mx-auto mt-9 text-white opacity-20"></hr>
             <Hero />
